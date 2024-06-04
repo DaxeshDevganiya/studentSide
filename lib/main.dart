@@ -12,7 +12,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-
+import 'package:permission_handler/permission_handler.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 
 Future<void> backgroundHandler(RemoteMessage message) async {
@@ -67,6 +67,11 @@ class _SplashScreenState extends State<SplashScreen> {
     // print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     // print("heyyyyytoken" + FirebaseMessaging.instance.getToken().toString());
     print(_fcm);
+  }
+
+  locationChecker() async {
+    if (await Permission.location.serviceStatus.isEnabled) {
+    } else {}
   }
 
   Future<void> checkAuthentication() async {
